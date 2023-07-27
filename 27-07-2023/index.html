@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="submit">
+        <input type="name" id="name">
+        <input type="email" id="email">
+        <input type="number" id="number">
+        <input type="submit" name="" id="submit">
+    </form>
+    <div>
+        <table border="1">
+            <tr>
+                <th>name</th>
+                <th>email</th>
+                <th>Phone</th>
+            </tr>
+        </table>
+    </div>
+</body>
+<script>
+    let n = document.getElementById("name");
+    let e = document.getElementById("email");
+    let num = document.getElementById("number");
+    let sub = document.getElementById("submit");
+    let form = document.querySelector("form");
+    let t = document.querySelector("table");
+
+    let data = JSON.parse(localStorage.getItem("userData")) || [];
+    
+    form.addEventListener("submit", saveData);
+    display(data)
+    function saveData(el) {
+        el.preventDefault()
+        let obj = {
+            name:n.value,
+            email:e.value,
+            phone:num.value
+        }
+        data.push(obj);
+        localStorage.setItem("userData", JSON.stringify(data));
+        display(data);
+    }
+    function display(arr){
+        let str = ""
+        for(let i = 0; i < arr.length; i++) {
+            
+            let st = `
+             <tr>
+                <td>${arr[i].name}</td>
+                <td>${arr[i].email}</td>
+                <td>${arr[i].phone}</td>
+             </tr>
+            `;
+            str+=st;
+        }
+    t.innerHTML = str;
+    }
+</script>
+</html>
