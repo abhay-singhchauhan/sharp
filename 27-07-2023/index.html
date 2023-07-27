@@ -34,14 +34,14 @@
     
     form.addEventListener("submit", saveData);
     t.addEventListener("click", deleteData);
-
      
-    function deleteData(e){
      
-      if(e.target.classList.contains("delete")){
+    function deleteData(em){
+     
+      if(em.target.classList.contains("delete")){
         if(confirm("Want to delete this element ?")){
             let da = data.filter((ele, i)=>{
-          if((i+1) !== e.target.parentElement.rowIndex){
+          if((i+1) !== em.target.parentElement.rowIndex){
             return true;
           }else {
             return false;
@@ -52,6 +52,20 @@
         display(data)
         }
         
+      }else if(em.target.classList.contains("edit")){
+        let da = data.filter((ele, i)=>{
+          if((i+1) !== em.target.parentElement.rowIndex){
+            return true;
+          }else {
+            n.value = ele.name;
+            e.value = ele.email;
+            num.value = ele.phone;
+            return false;
+          }
+        })
+        data = da;
+        localStorage.setItem("userData", JSON.stringify(data))
+        display(data)
       }
     }
 
@@ -74,6 +88,8 @@
                 <th>name</th>
                 <th>email</th>
                 <th>Phone</th>
+                <th>Delete</th>
+                <th>Edit</th>
             </tr>`
         for(let i = 0; i < arr.length; i++) {
             let st = `
@@ -82,6 +98,7 @@
                 <td>${arr[i].email}</td>
                 <td>${arr[i].phone}</td>
                 <td class="delete">Delete</td>
+                <td class="edit">edit</td>
              </tr>
             `;
             str+=st;
