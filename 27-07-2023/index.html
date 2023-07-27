@@ -33,6 +33,29 @@
     let data = JSON.parse(localStorage.getItem("userData")) || [];
     
     form.addEventListener("submit", saveData);
+    t.addEventListener("click", deleteData);
+
+     
+    function deleteData(e){
+     
+      if(e.target.classList.contains("delete")){
+        if(confirm("Want to delete this element ?")){
+            let da = data.filter((ele, i)=>{
+          if((i+1) !== e.target.parentElement.rowIndex){
+            return true;
+          }else {
+            return false;
+          }
+        })
+        data = da;
+        localStorage.setItem("userData", JSON.stringify(data))
+        display(data)
+        }
+        
+      }
+    }
+
+
     display(data)
     function saveData(el) {
         el.preventDefault()
@@ -47,13 +70,18 @@
     }
     function display(arr){
         let str = ""
+        str+=`<tr>
+                <th>name</th>
+                <th>email</th>
+                <th>Phone</th>
+            </tr>`
         for(let i = 0; i < arr.length; i++) {
-            
             let st = `
              <tr>
                 <td>${arr[i].name}</td>
                 <td>${arr[i].email}</td>
                 <td>${arr[i].phone}</td>
+                <td class="delete">Delete</td>
              </tr>
             `;
             str+=st;
