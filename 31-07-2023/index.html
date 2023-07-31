@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>resister expense</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+        body{
+            height: 100vh;
+        }
+        *{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            margin-bottom: 200px;
+            display: flex;
+            height: 50px;
+            width: 100%;
+            margin: auto;
+            justify-content: space-around;
+            background-color: rgb(148, 143, 143);
+        }
+        header  div{
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        header  div:hover{
+            transition: 0.3s;
+            background-color: grey;
+        }
+        header  div  h2{
+          
+            text-align: center;
+            color: white;
+        }
+        a{
+            width: 20%;
+            text-decoration: none;
+        }
+        #form{
+            border-radius: 5px;
+            background-color: rgb(148, 143, 143);
+            padding: 20px;
+            width: 60%;
+            margin: auto;
+            margin-top: 100px;
+        }
+      label{
+         font-size: 20px;
+         color: white;
+        }
+      input{
+        cursor: pointer;
+        margin-bottom: 20px;
+      }
+      select{
+        margin-bottom: 20px;
+      }
+      form button{
+        border: 1px solid grey;
+        width: 100px;
+       display: block;
+       margin: auto;
+       background-color: white;
+       border-radius: 5px;
+       color: black;
+      }
+      form button:hover{
+        transition: 0.3s;
+      background-color: rgb(238, 230, 230);
+      }
+        @media only screen and (max-width:1000px) {
+            #form{
+                width: 70%;
+            }
+        }
+        @media only screen and (max-width:800px) {
+            #form{
+                width: 80%;
+            }
+        }
+        @media only screen and (max-width:700px) {
+            #form{
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+      <a href="index.html">
+        <div>
+            <h2>
+                Register
+            </h2>
+        </div>
+     </a>
+     <a href="data.html">
+        <div>
+            <h2>
+                ShowExpense
+            </h2>
+        </div>
+    </a>
+    </header>
+    <main>
+        <div id="form">
+            <form action="submit">
+                <label for="value" class="form-label">value</label>
+                <input type="number" id="value" class="form-control">
+                <label for="desc" class="form-label">Description</label>
+                <input type="text" id="desc" class="form-control">
+                <label for="cate">category</label>
+                <select id="cate" class="form-select">
+                    <option value=""></option>
+                    <option value="Personal">Personal</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Food">Food</option>
+                    <option value="Travel">Travel</option>
+                    <option value="Bills">Bills</option>
+                    <option value="Clothing">Clothing</option>
+                </select>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </main>
+</body>
+<script src="index.js"></script>
+</html>
