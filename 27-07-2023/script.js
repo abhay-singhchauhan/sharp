@@ -1,3 +1,4 @@
+
   
     let n = document.getElementById("name");
     let e = document.getElementById("email");
@@ -5,26 +6,28 @@
     let sub = document.getElementById("submit");
     let form = document.querySelector("form");
     let t = document.querySelector("table");
-
-    
+    let data;
+ 
     form.addEventListener("submit", saveData);
     t.addEventListener("click", deleteData);
      
+    axios.get("https://crudcrud.com/api/4b8d9466293f43828420419b0a90325a/appointment").then((res)=>{
+      display(res.data)
+  })
      
     function deleteData(em){
      
       if(em.target.classList.contains("delete")){
         if(confirm("Want to delete this element ?")){
-            let da = data.filter((ele, i)=>{
-          if((i+1) !== em.target.parentElement.rowIndex){
-            return true;
-          }else {
-            return false;
+            data.forEach((ele, i)=>{
+          if((i+1) === em.target.parentElement.rowIndex){
+            axios.delete(`https://crudcrud.com/api/4b8d9466293f43828420419b0a90325a/appointment/${ele._id}`).then((res)=>{
+              axios.get(`https://crudcrud.com/api/4b8d9466293f43828420419b0a90325a/appointment`).then((res)=>{
+               display(res.data);
+            })
+            })
           }
         })
-        data = da;
-        localStorage.setItem("userData", JSON.stringify(data))
-        display(data)
         }
         
       }else if(em.target.classList.contains("edit")){
@@ -44,9 +47,7 @@
       }
     }
 
-    axios.get("https://crudcrud.com/api/4b8d9466293f43828420419b0a90325a/appointment").then((res)=>{
-        display(res.data)
-    })
+
 
     function saveData(el) {
         el.preventDefault()
@@ -64,6 +65,7 @@
         })
     }
     function display(arr){
+      data = arr;
         let str = ""
         str+=`<tr>
                 <th>name</th>
