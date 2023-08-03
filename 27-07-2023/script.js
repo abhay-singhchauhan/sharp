@@ -34,16 +34,17 @@
       }else if(em.target.classList.contains("edit")){
         
         data.forEach((ele, i)=>{
-          let obj = {
-            yes:true,
-            id:ele._id
-          }
-          localStorage.setItem("edited", JSON.stringify(obj))
           if((i+1) === em.target.parentElement.rowIndex){
             n.value = ele.name;
             e.value = ele.email;
             num.value = ele.phone;
-           
+
+            let obj = {
+              yes:true,
+              id:ele._id
+            }
+
+            localStorage.setItem("edited", JSON.stringify(obj))
             em.target.parentElement.style.display = "none"
            
           }
@@ -75,7 +76,6 @@
       })
         }else{
           axios.put(`https://crudcrud.com/api/4b37104082534c75b8e9223831619985/appointment/${con.id}`, {name:n.value,email:e.value,phone:num.value}).then((res)=>{
-            console.log(res._id)
             axios.get(`https://crudcrud.com/api/4b37104082534c75b8e9223831619985/appointment`).then((res)=>{
               con.yes = false;
               localStorage.setItem("edited", JSON.stringify(con))
