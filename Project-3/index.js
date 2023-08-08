@@ -3,12 +3,13 @@ let price = document.getElementById("price");
 let dname = document.getElementById("dish");
 let tab = document.getElementById("table");
 let table = document.querySelectorAll("table");
+
 table[0].addEventListener("click",(ee)=>{
 if(ee.target.classList.contains("del")) {
     if(confirm("Are you sure, you wanna delete this entry!!")){
        let retData = JSON.parse(localStorage.getItem("1"));
        let a = ee.target.parentElement.rowIndex;
-       axios.delete(`https://crudcrud.com/api/bc0207f0f5b9497b82f6478af7cf6120/1/${retData[a-1]._id}`).then((res)=>{
+       axios.delete(`https://crudcrud.com/api/d9e8ba3d72b045109cfc9a0f1787d57e/1/${retData[a-1]._id}`).then((res)=>{
         display()
        })
     }
@@ -19,7 +20,7 @@ table[1].addEventListener("click",(ee)=>{
         if(confirm("Are you sure, you wanna delete this entry!!")){
            let retData = JSON.parse(localStorage.getItem("2"));
            let a = ee.target.parentElement.rowIndex;
-           axios.delete(`https://crudcrud.com/api/bc0207f0f5b9497b82f6478af7cf6120/2/${retData[a-1]._id}`).then((res)=>{
+           axios.delete(`https://crudcrud.com/api/d9e8ba3d72b045109cfc9a0f1787d57e/2/${retData[a-1]._id}`).then((res)=>{
             display()
            })
         }
@@ -32,7 +33,7 @@ table[1].addEventListener("click",(ee)=>{
             if(confirm("Are you sure, you wanna delete this entry!!")){
                let retData = JSON.parse(localStorage.getItem("3"));
                let a = ee.target.parentElement.rowIndex;
-               axios.delete(`https://crudcrud.com/api/bc0207f0f5b9497b82f6478af7cf6120/3/${retData[a-1]._id}`).then((res)=>{
+               axios.delete(`https://crudcrud.com/api/d9e8ba3d72b045109cfc9a0f1787d57e/3/${retData[a-1]._id}`).then((res)=>{
                 display()
                })
             }
@@ -52,7 +53,7 @@ function apiCall(element){
         tab:tab.value
      }
 
-     axios.post(`https://crudcrud.com/api/bc0207f0f5b9497b82f6478af7cf6120/${tab.value}`,obj).then((res)=>{
+     axios.post(`https://crudcrud.com/api/d9e8ba3d72b045109cfc9a0f1787d57e/${tab.value}`,obj).then((res)=>{
           display();
      })
   }else{
@@ -64,7 +65,7 @@ function display(){
     let body = document.querySelectorAll(".tbody");
     for(let i = 1 ; i <=3; i++) {
         let storeData = [];
-        axios.get(`https://crudcrud.com/api/bc0207f0f5b9497b82f6478af7cf6120/${i}`).then((res)=>{
+        axios.get(`https://crudcrud.com/api/d9e8ba3d72b045109cfc9a0f1787d57e/${i}`).then((res)=>{
          let str = "";
         res.data.forEach((ele, i)=>{
             str += `<tr>
