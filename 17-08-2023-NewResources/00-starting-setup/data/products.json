@@ -1,1 +1,16 @@
-[{"id":"123245","title":"A Book","imageUrl":"https://cloudinary-marketing-res.cloudinary.com/images/w_1000,c_scale/v1679921049/Image_URL_Example/Image_URL_Example-png?_i=AA","description":"https://cloudinary-marketing-res.cloudinary.com/images/w_1000,c_scale/v1679921049/Image_URL_Example/Image_URL_Example-png?_i=AA","price":"This is an awesome book!"},{"id":"0.18292132151991636","title":"A Book","imageUrl":"https://cloudinary-marketing-res.cloudinary.com/images/w_1000,c_scale/v1679921049/Image_URL_Example/Image_URL_Example-png?_i=AA","description":"https://cloudinary-marketing-res.cloudinary.com/images/w_1000,c_scale/v1679921049/Image_URL_Example/Image_URL_Example-png?_i=AA","price":"https://cloudinary-marketing-res.cloudinary.com/images/w_1000,c_scale/v1679921049/Image_URL_Example/Image_URL_Example-png?_i=AA"}]
+[
+  {
+    "id": "123245",
+    "title": "A Book",
+    "imageUrl": "https://cloudinary-marketing-res.cloudinary.com/images/w_1000,c_scale/v1679921049/Image_URL_Example/Image_URL_Example-png?_i=AA",
+    "description": "https://cloudinary-marketing-res.cloudinary.com/images/w_1000,c_scale/v1679921049/Image_URL_Example/Image_URL_Example-png?_i=AA",
+    "price": "This is an awesome book!"
+  },
+  {
+    "id": "0.18292132151991636",
+    "title": "A Book",
+    "imageUrl": "https://cloudinary-marketing-res.cloudinary.com/images/w_1000,c_scale/v1679921049/Image_URL_Example/Image_URL_Example-png?_i=AA",
+    "description": "https://cloudinary-marketing-res.cloudinary.com/images/w_1000,c_scale/v1679921049/Image_URL_Example/Image_URL_Example-png?_i=AA",
+    "price": "https://cloudinary-marketing-res.cloudinary.com/images/w_1000,c_scale/v1679921049/Image_URL_Example/Image_URL_Example-png?_i=AA"
+  }
+]
