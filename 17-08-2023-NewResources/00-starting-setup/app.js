@@ -12,6 +12,8 @@ app.set("views", "views");
 
 const Products = require("./models/product");
 const Users = require("./models/user");
+const Cart = require("./models/cart");
+const CartItem = require("./models/cart-item");
 
 const adminRoutes = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
@@ -34,7 +36,8 @@ app.use(shopRoutes);
 app.use(errorController.get404);
 
 Users.hasMany(Products);
-
+Users.hasOne(Cart);
+Products.belongsToMany(Cart, { through: CartItem });
 sequelize
   .sync()
   .then((res) => {
@@ -50,7 +53,9 @@ sequelize
     return res;
   })
   .then((res) => {
-    console.log(res);
+    return res.createCart();
+  })
+  .then((res) => {
     app.listen(3000);
   })
   .catch((err) => {
