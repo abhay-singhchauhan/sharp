@@ -9,7 +9,7 @@ router.get("/contactus", (req, res) => {
   res.sendFile(path.join(__dirname, "../", "views", "contact.htm"));
 });
 router.post("/success", (req, res) => {
-  console.log(req.body);
+  console.log(req.body.title);
   res.sendFile(path.join(__dirname, "../", "views", "successMess.htm"));
 });
 module.exports = router;
