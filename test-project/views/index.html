@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .id {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="http://localhost:8000/addingData" method="post">
+      <input type="text" name="todoname" placeholder="Todo Name" />
+      <input type="text" name="tododescription" placeholder="Description" />
+      <button type="submit">Submit</button>
+    </form>
+    <div>
+      <h2>Current Tasks</h2>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Todo Name</th>
+            <th>Todo Description</th>
+            <th>Mark As Done</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Todo Name</td>
+            <td>Todo Description</td>
+            <td>Mark As Done</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div>
+      <h2>Task History</h2>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Todo Name</th>
+            <th>Todo Description</th>
+            <th>Remove from History</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Todo Name</td>
+            <td>Todo Description</td>
+            <td>Mark As Done</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+  <script>
+    let tbdy = document.querySelectorAll("tbody");
+    fetch("http://localhost:8000/get-current-data")
+      .then((res) => {
+        return res.json();
+      })
+      .then((res) => {
+        console.log(res);
+        displayCur(res);
+      });
+
+    fetch("http://localhost:8000/get-done-data")
+      .then((res) => {
+        return res.json();
+      })
+      .then((res) => {
+        console.log(res);
+        displayDone(res);
+      });
+
+    tbdy[0].addEventListener("click", (e) => {
+      if (e.target.classList.contains("mar")) {
+        let hi = e.target.parentElement.children[0].innerText;
+        window.location.href = `http://localhost:8000/mark/${hi}`;
+      }
+    });
+
+    tbdy[1].addEventListener("click", (e) => {
+      if (e.target.classList.contains("mar")) {
+        let hi = e.target.parentElement.children[0].innerText;
+        window.location.href = `http://localhost:8000/delete/${hi}`;
+      }
+    });
+    function displayCur(data) {
+      let str = "";
+      data.forEach((ele) => {
+        str += `<tr>
+            <td class="id">${ele.id}</td>
+            <td>${ele.name}</td>
+            <td>${ele.description}</td>
+            <td class="mar">Mark As Done</td>
+          </tr>`;
+      });
+      tbdy[0].innerHTML = str;
+    }
+
+    function displayDone(data) {
+      let str = "";
+      data.forEach((ele) => {
+        str += `<tr>
+            <td class="id">${ele.id}</td>
+            <td>${ele.name}</td>
+            <td>${ele.description}</td>
+            <td class="mar">Mark As Done</td>
+          </tr>`;
+      });
+      tbdy[1].innerHTML = str;
+    }
+  </script>
+</html>
